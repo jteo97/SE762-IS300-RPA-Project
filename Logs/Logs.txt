@@ -1,0 +1,5 @@
+﻿The course A1 has missing value at column Duration
+The course A1 has missing value at column Exam Timetable Requirements
+The course B1 has missing value at column Stationery Requirements
+The course B1 has missing value at column Book Details & Special Requirements
+The course B1 has missing value at column Exam Timetable Requirements
