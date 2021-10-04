@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DataExtraction" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="977.6,2497.6" sap2010:WorkflowViewState.IdRef="DataExtraction_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DataExtraction" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="824,2081.6" sap2010:WorkflowViewState.IdRef="DataExtraction_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -73,7 +73,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DataExtraction" sap:VirtualizedContainerService.HintSize="988,2432.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DataExtraction" sap:VirtualizedContainerService.HintSize="566.4,2016.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="excelDT" />
       <Variable x:TypeArguments="x:String" Default="Logs\Logs.txt" Name="logsFilePath" />
@@ -83,7 +83,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="946.4,883.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+    <Sequence sap:VirtualizedContainerService.HintSize="524.8,883.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="exists" />
       </Sequence.Variables>
@@ -108,11 +108,9 @@
         </If.Then>
       </If>
     </Sequence>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Retrieve course data" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="946.4,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CourseDataExtraction.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Retrieve course data" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="524.8,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CourseDataExtraction.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="excelDT">
-          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="excelDT" />
-        </OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="excelDT">[excelDT]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -120,65 +118,33 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" ColumnCount="0" DataTable="[excelDT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="946.4,1232" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" ColumnCount="0" DataTable="[excelDT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="524.8,816" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="912.8,1057.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="475.2,641.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="courseName" />
+              <Variable x:TypeArguments="x:String" Name="canvasID" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="871.2,964.8" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Enumerable.Range(0,CurrentRow.ItemArray.Count)]">
-              <ui:ForEach.Body>
-                <ActivityAction x:TypeArguments="x:Object">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="x:Object" Name="index" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="836,840" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                    <Sequence.Variables>
-                      <Variable x:TypeArguments="x:String" Name="rowItem" />
-                    </Sequence.Variables>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[index.ToString]" />
-                    <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="[Cint(index)]" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="794.4,188" sap2010:WorkflowViewState.IdRef="GetRowItem_2" Row="[CurrentRow]">
-                      <ui:GetRowItem.Value>
-                        <OutArgument x:TypeArguments="x:String">[rowItem]</OutArgument>
-                      </ui:GetRowItem.Value>
-                    </ui:GetRowItem>
-                    <If Condition="[String.IsNullOrEmpty(rowItem)]" sap:VirtualizedContainerService.HintSize="794.4,386.4" sap2010:WorkflowViewState.IdRef="If_2">
-                      <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="375.2,227.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:AppendLine DisplayName="Append Line" FileName="[LogsFilePath]" sap:VirtualizedContainerService.HintSize="333.6,134.4" sap2010:WorkflowViewState.IdRef="AppendLine_2" Text="[&quot;The course &quot; + CurrentRow(0).ToString + &quot; has missing value at column &quot; + ExcelDT.Columns(CInt(index)).ToString]" UseDefaultEncoding="False" />
-                        </Sequence>
-                      </If.Then>
-                      <If.Else>
-                        <Sequence sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[rowItem.ToString]" />
-                        </Sequence>
-                      </If.Else>
-                    </If>
-                  </Sequence>
-                </ActivityAction>
-              </ui:ForEach.Body>
-            </ui:ForEach>
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Course Name" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="GetRowItem_2" Row="[CurrentRow]">
+              <ui:GetRowItem.Value>
+                <OutArgument x:TypeArguments="x:String">[courseName]</OutArgument>
+              </ui:GetRowItem.Value>
+            </ui:GetRowItem>
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Canvas ID" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="GetRowItem_3" Row="[CurrentRow]">
+              <ui:GetRowItem.Value>
+                <OutArgument x:TypeArguments="x:String">[canvasID]</OutArgument>
+              </ui:GetRowItem.Value>
+            </ui:GetRowItem>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[courseName + canvasID]" />
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>
