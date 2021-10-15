@@ -6,7 +6,8 @@
     "UiPath.Excel.Activities": "[2.11.1-preview]",
     "UiPath.Mail.Activities": "[1.11.2-preview]",
     "UiPath.System.Activities": "[21.8.0-preview]",
-    "UiPath.UIAutomation.Activities": "[21.8.0-preview]"
+    "UiPath.UIAutomation.Activities": "[21.8.0-preview]",
+    "UiPath.Word.Activities": "[1.7.3]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -16,7 +17,6 @@
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
-    "isAttended": false,
     "requiresUserInteraction": true,
     "supportsPersistence": false,
     "excludedLoggedData": [
@@ -25,8 +25,7 @@
     ],
     "executionType": "Workflow",
     "readyForPiP": false,
-    "startsInPiP": false,
-    "mustRestoreAllDependencies": true
+    "startsInPiP": false
   },
   "designOptions": {
     "projectProfile": "Developement",
