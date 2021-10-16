@@ -58,28 +58,47 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+      <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
   <Sequence DisplayName="DataToWord" sap:VirtualizedContainerService.HintSize="552,400.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="E:\Part IV studies\762\test.docx" sap:VirtualizedContainerService.HintSize="510,308.666666666667" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
+    <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="E:\Part IV studies\762\Doc1" sap:VirtualizedContainerService.HintSize="510,308.666666666667" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
       <p:WordApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WordDocument">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,200" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence sap:VirtualizedContainerService.HintSize="476,200" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <p:WordAppendText DisplayName="Append Text" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="WordAppendText_1" Text="Word Doc 1" />
+            <p:WordAppendText DisplayName="Append Text" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="WordAppendText_1" Text="Tables">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </p:WordAppendText>
           </Sequence>
         </ActivityAction>
       </p:WordApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </p:WordApplicationScope>
   </Sequence>
 </Activity>
