@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1114,2548" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1001,2522" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -74,7 +74,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="552,2483" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The Main Sequence is Responsible for Invoking Modularized Files to Execute the WorkFlow&#xD;&#xA;" sap:VirtualizedContainerService.HintSize="552,2457" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="courseInfoTable" />
       <Variable x:TypeArguments="ui:Browser" Name="openBrowser" />
@@ -82,14 +82,16 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="LogFileCreation.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Set up folder/file for logging" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="LogFileCreation.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Retrieve course data" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CourseDataExtraction.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Retrieve course data" DisplayName="Extract Course Information Necessary for Search" sap:VirtualizedContainerService.HintSize="510,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CourseDataExtraction.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="excelDT">[courseInfoTable]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
@@ -99,19 +101,12 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="510,184" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[openBrowser]">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser to use for Future Process" sap:VirtualizedContainerService.HintSize="510,116" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[openBrowser]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="Sequence_3">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </Sequence>
         </ActivityAction>
       </ui:OpenBrowser.Body>
       <ui:OpenBrowser.Url>
@@ -120,11 +115,11 @@
         </InArgument>
       </ui:OpenBrowser.Url>
     </ui:OpenBrowser>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" ColumnCount="0" DataTable="[courseInfoTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,1733" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" ColumnCount="0" DataTable="[courseInfoTable]" DisplayName="Loop Though Each Course in Excel Sheet" sap:VirtualizedContainerService.HintSize="510,1733" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="course" />
           </ActivityAction.Argument>
           <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,1560" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
@@ -143,62 +138,44 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Course Name" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="GetRowItem_1" Row="[CurrentRow]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Course Name" DisplayName="Get Course Name" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="GetRowItem_1" Row="[course]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="x:String">[courseName]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Canvas ID" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="GetRowItem_2" Row="[CurrentRow]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Canvas ID" DisplayName="Get Canvas ID" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="GetRowItem_2" Row="[course]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="x:String">[canvasID]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Term" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="GetRowItem_3" Row="[CurrentRow]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Term" DisplayName="Get Term of Course" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="GetRowItem_3" Row="[course]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="x:String">[term]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Year" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="GetRowItem_4" Row="[CurrentRow]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Year" DisplayName="Get Year of Course" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="GetRowItem_4" Row="[course]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="x:String">[year]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="CanvasNavigation.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Extract Datatable from Canvas" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="CanvasDataExtraction.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="canvasID">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="canvasID" />
-                </InArgument>
-                <OutArgument x:TypeArguments="sd:DataTable" x:Key="assignmentTable">
-                  <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="assignmentTable" />
-                </OutArgument>
-                <OutArgument x:TypeArguments="sd:DataTable" x:Key="gradesTable">
-                  <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="gradesTable" />
-                </OutArgument>
-                <InArgument x:TypeArguments="ui:Browser" x:Key="openBrowser">
-                  <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="openBrowser" />
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="canvasID">[canvasID]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="assignmentTable">[assignmentTable]</OutArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="gradesTable">[gradesTable]</OutArgument>
+                <InArgument x:TypeArguments="ui:Browser" x:Key="openBrowser">[openBrowser]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="DCOPageNav.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Extract Datatable from DCO" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="DCODataExtraction.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <OutArgument x:TypeArguments="sd:DataTable" x:Key="AssessmentTable">
-                  <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="DCOTable" />
-                </OutArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="courseName">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="courseName" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="term">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="term" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="year">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="year" />
-                </InArgument>
-                <InArgument x:TypeArguments="ui:Browser" x:Key="openBrowser">
-                  <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="openBrowser" />
-                </InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="AssessmentTable">[DCOTable]</OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="courseName">[courseName]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="term">[term]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="year">[year]</InArgument>
+                <InArgument x:TypeArguments="ui:Browser" x:Key="openBrowser">[openBrowser]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Compare.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Compare the information from both sources" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Compare.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <OutArgument x:TypeArguments="sd:DataTable" x:Key="differencesTable">[differencesTable]</OutArgument>
                 <InArgument x:TypeArguments="sd:DataTable" x:Key="gradesTable">[gradesTable]</InArgument>
@@ -206,7 +183,7 @@
                 <InArgument x:TypeArguments="sd:DataTable" x:Key="DCOTable">[DCOTable]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="TableToWord.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Output the information to word Doc" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="TableToWord.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="sd:DataTable" x:Key="gradesTable">[gradesTable]</InArgument>
                 <InArgument x:TypeArguments="sd:DataTable" x:Key="assignmentTable">[assignmentTable]</InArgument>

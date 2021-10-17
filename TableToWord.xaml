@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1009,2911</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1001,2953</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TableToWord_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -78,27 +78,23 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="TableToWord" sap:VirtualizedContainerService.HintSize="552,2846" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This sequence is responsible for outputting the tables into a report (docx)&#xD;&#xA;" DisplayName="TableToWord" sap:VirtualizedContainerService.HintSize="552,2888" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="outputFilePath">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">Output/courseReport.docx</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="Output/courseReport.docx" Name="outputFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="exists" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:PathExists DisplayName="Path Exists" Exists="[exists]" sap:VirtualizedContainerService.HintSize="510,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[outputFilePath]" PathType="File" />
+    <ui:PathExists DisplayName="Check if report file exists" Exists="[exists]" sap:VirtualizedContainerService.HintSize="510,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[outputFilePath]" PathType="File" />
     <If Condition="[not exists]" sap:VirtualizedContainerService.HintSize="510,520" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,343" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Create Report File" sap:VirtualizedContainerService.HintSize="376,343" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -118,7 +114,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="Output\courseReport.docx" sap:VirtualizedContainerService.HintSize="510,2065" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
+    <p:WordApplicationScope DisplayName="Word Report File" FilePath="Output\courseReport.docx" sap:VirtualizedContainerService.HintSize="510,2065" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
       <p:WordApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WordDocument">
           <ActivityAction.Argument>
@@ -130,13 +126,13 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <p:WordAppendText DisplayName="Append Text" sap:VirtualizedContainerService.HintSize="434,104" sap2010:WorkflowViewState.IdRef="WordAppendText_1" Text="[courseName + &quot; Canvas Grade Table&quot;]" />
+            <p:WordAppendText DisplayName="Write Headings" sap:VirtualizedContainerService.HintSize="434,104" sap2010:WorkflowViewState.IdRef="WordAppendText_1" Text="[courseName + &quot; Canvas Grade Table&quot;]" />
             <p:WordInsertDataTable Bookmark="{x:Null}" OccurrenceIndex="{x:Null}" DataTable="[gradesTable]" DisplayName="Insert DataTable in Document" sap:VirtualizedContainerService.HintSize="434,292" sap2010:WorkflowViewState.IdRef="WordInsertDataTable_2" InsertRelativeTo="Text" Occurrence="Last" Position="After" Text="[courseName + &quot; Canvas Grade Table&quot;]" />
-            <p:WordAppendText DisplayName="Append Text" sap:VirtualizedContainerService.HintSize="434,104" sap2010:WorkflowViewState.IdRef="WordAppendText_3" Text="[courseName + &quot; DCO Table&quot;]" />
-            <p:WordInsertDataTable Bookmark="{x:Null}" OccurrenceIndex="{x:Null}" DataTable="[DCOTable]" DisplayName="Insert DataTable in Document" sap:VirtualizedContainerService.HintSize="434,292" sap2010:WorkflowViewState.IdRef="WordInsertDataTable_3" InsertRelativeTo="Text" Position="After" Text="[courseName + &quot; DCO Table&quot;]" />
-            <p:WordAppendText DisplayName="Append Text" sap:VirtualizedContainerService.HintSize="434,104" sap2010:WorkflowViewState.IdRef="WordAppendText_5" Text="[courseName + &quot; Assignment Table&quot;]" />
+            <p:WordAppendText DisplayName="Write Headings" sap:VirtualizedContainerService.HintSize="434,104" sap2010:WorkflowViewState.IdRef="WordAppendText_5" Text="[courseName + &quot; Assignment Table&quot;]" />
             <p:WordInsertDataTable Bookmark="{x:Null}" OccurrenceIndex="{x:Null}" DataTable="[assignmentTable]" DisplayName="Insert DataTable in Document" sap:VirtualizedContainerService.HintSize="434,292" sap2010:WorkflowViewState.IdRef="WordInsertDataTable_5" InsertRelativeTo="Text" Occurrence="Last" Position="After" Text="[courseName + &quot; Assignment Table&quot;]" />
-            <p:WordAppendText DisplayName="Append Text" sap:VirtualizedContainerService.HintSize="434,104" sap2010:WorkflowViewState.IdRef="WordAppendText_4" Text="[courseName + &quot; Differences Table&quot;]" />
+            <p:WordAppendText DisplayName="Write Headings" sap:VirtualizedContainerService.HintSize="434,104" sap2010:WorkflowViewState.IdRef="WordAppendText_3" Text="[courseName + &quot; DCO Table&quot;]" />
+            <p:WordInsertDataTable Bookmark="{x:Null}" OccurrenceIndex="{x:Null}" DataTable="[DCOTable]" DisplayName="Insert DataTable in Document" sap:VirtualizedContainerService.HintSize="434,292" sap2010:WorkflowViewState.IdRef="WordInsertDataTable_3" InsertRelativeTo="Text" Position="After" Text="[courseName + &quot; DCO Table&quot;]" />
+            <p:WordAppendText DisplayName="Write Headings" sap:VirtualizedContainerService.HintSize="434,104" sap2010:WorkflowViewState.IdRef="WordAppendText_4" Text="[courseName + &quot; Differences Table&quot;]" />
             <p:WordInsertDataTable Bookmark="{x:Null}" OccurrenceIndex="{x:Null}" DataTable="[differencesTable]" DisplayName="Insert DataTable in Document" sap:VirtualizedContainerService.HintSize="434,292" sap2010:WorkflowViewState.IdRef="WordInsertDataTable_4" InsertRelativeTo="Text" Occurrence="Last" Position="After" Text="[courseName + &quot; Differences Table&quot;]" />
           </Sequence>
         </ActivityAction>
