@@ -3,3 +3,20 @@ The course A1 has missing value at column Exam Timetable Requirements
 The course B1 has missing value at column Stationery Requirements
 The course B1 has missing value at column Book Details & Special Requirements
 The course B1 has missing value at column Exam Timetable Requirements
+Error: could not find an element while navigating Canvas page at 10/18/2021 14:20:50
+Error: could not find an element while navigating Canvas page at 10/18/2021 14:37:14
+Error: could not find an element while navigating Canvas page at 10/18/2021 14:40:45
+Error: could not find an element while navigating Canvas page at 10/18/2021 14:53:21
+Error: could not find an element while navigating Canvas page at 10/18/2021 15:03:40
+Error: could not find an element while navigating Canvas page at 10/18/2021 15:07:50
+Error: could not find an element while navigating Canvas page at 10/18/2021 15:15:08
+Error: could not find an element while navigating Canvas page at 10/18/2021 15:25:23
+Error: could not find an element while navigating Canvas page at 10/18/2021 15:28:21
+Error: could not find an element while navigating Canvas page at 10/18/2021 15:33:09
+Error: could not find an element while navigating Canvas page at 10/18/2021 15:37:27
+Error: could not find an element while navigating Canvas page at 10/18/2021 15:48:03
+Error: could not find an element while navigating Canvas page at 10/18/2021 15:58:42, course skipped
+Error: could not find an element while navigating Canvas page at 10/18/2021 16:03:39, course skipped
+Error: could not find an element while navigating Canvas page at 10/18/2021 16:04:11, course skipped
+Error: could not find an element while navigating Canvas page at 10/18/2021 16:04:42, course skipped
+Error: Faulty search filter arguments for DCO page at 10/18/2021 16:08:34, course skipped
